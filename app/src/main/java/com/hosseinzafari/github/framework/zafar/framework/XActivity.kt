@@ -11,22 +11,29 @@ import androidx.appcompat.app.AppCompatActivity
     @email  hosseinzafari2000@gmail.com
 */
 
-abstract class XAppCompatActivity : AppCompatActivity(){
+abstract class XActivity : AppCompatActivity(){
 
     override fun onStart() {
         super.onStart()
         Debug.verbose("${this::class.java.simpleName} OnStarted")
+        X.currentActivity = this
     }
 
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        X.currentActivity = this
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Debug.verbose("${this::class.java.simpleName} OnCreated")
+        X.currentActivity = this
     }
 
     override fun onResume() {
         super.onResume()
         Debug.verbose("${this::class.java.simpleName} OnResume")
+        X.currentActivity = this
     }
 
     override fun onPause() {

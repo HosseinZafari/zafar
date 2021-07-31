@@ -1,6 +1,7 @@
 package com.hosseinzafari.github.framework.zafar.framework
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatActivity
 
 /*
     @created in 31/07/2021 - 10:51 AM
@@ -11,11 +12,19 @@ import android.app.Application
 
 class X : Application() {
 
+    companion object {
+        lateinit var currentActivity: AppCompatActivity
+
+        fun config() {
+            Debug.LEVEL = LOG_LEVEL.VERBOSE
+            Debug.LOG_TAG = "HodHod"
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
 
-        Debug.LEVEL = LOG_LEVEL.ERROR
-        Debug.LOG_TAG = "HodHod"
+        config()
     }
 
 }
